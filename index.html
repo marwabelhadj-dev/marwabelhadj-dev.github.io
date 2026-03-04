@@ -424,7 +424,13 @@
  .about-grid,.exp-grid { grid-template-columns:1fr; gap:2.5rem; }
  footer { flex-direction:column; text-align:center; }
  }
-  /* ── Restructured layouts ── */
+  /* StockTrak carousel — show full screenshot without cropping */
+ #stCarousel .surc-slide {
+   object-fit: contain;
+   background: #f5f3fc;
+ }
+
+ /* ── Restructured layouts ── */
   .about-intro-grid { max-width: 760px; }
   .skills-full {
     display: grid;
@@ -653,7 +659,22 @@
  </div>
 
  <div class="proj-card reveal" style="transition-delay:.1s">
- <div class="proj-thumb pt2" style="background:linear-gradient(135deg,var(--green-t),rgba(174,234,148,.15));display:flex;align-items:center;justify-content:center;"><svg width='48' height='48' viewBox='0 0 48 48' fill='none'><rect x='4' y='12' width='40' height='28' rx='4' stroke='#2a6e1a' stroke-width='2.5'/><path d='M4 20h40' stroke='#2a6e1a' stroke-width='2'/><path d='M16 12V8M32 12V8' stroke='#2a6e1a' stroke-width='2' stroke-linecap='round'/></svg></div>
+ <div class="surc-carousel" id="stCarousel">
+  <div class="surc-track" id="stTrack">
+   <img class="surc-slide" src="st1.png" alt="StockTrak — Portfolio Summary">
+   <img class="surc-slide" src="st2.png" alt="StockTrak — Returns">
+   <img class="surc-slide" src="st3.png" alt="StockTrak — Market Value">
+   <img class="surc-slide" src="st4.png" alt="StockTrak — Cash &amp; Buying Power">
+  </div>
+  <button class="surc-btn surc-prev" data-dir="-1" aria-label="Previous">&#8592;</button>
+  <button class="surc-btn surc-next" data-dir="1" aria-label="Next">&#8594;</button>
+  <div class="surc-dots" id="stDots">
+   <span class="surc-dot active" data-idx="0"></span>
+   <span class="surc-dot" data-idx="1"></span>
+   <span class="surc-dot" data-idx="2"></span>
+   <span class="surc-dot" data-idx="3"></span>
+  </div>
+ </div>
  <div class="proj-body">
  <div class="proj-tags">
  <span class="ptag ptag-g">StockTrak</span>
@@ -793,7 +814,7 @@ lb.addEventListener('click', function() { lb.style.display = 'none'; });
 var surcIdx   = 0;
 var surcTotal = 3;
 var track     = document.getElementById('surcTrack');
-var dots      = document.querySelectorAll('.surc-dot');
+var dots      = document.querySelectorAll('#surcDots .surc-dot');
 
 function goSurc(idx) {
   surcIdx = ((idx % surcTotal) + surcTotal) % surcTotal;
@@ -801,7 +822,7 @@ function goSurc(idx) {
   dots.forEach(function(d, i) { d.classList.toggle('active', i === surcIdx); });
 }
 
-document.querySelectorAll('.surc-btn').forEach(function(btn) {
+document.querySelectorAll('#surcCarousel .surc-btn').forEach(function(btn) {
   btn.addEventListener('click', function(e) {
     e.stopPropagation();
     goSurc(surcIdx + parseInt(btn.getAttribute('data-dir'), 10));
@@ -821,6 +842,39 @@ carousel.addEventListener('touchstart', function(e) { touchStartX = e.touches[0]
 carousel.addEventListener('touchend', function(e) {
   var dx = e.changedTouches[0].clientX - touchStartX;
   if (Math.abs(dx) > 40) goSurc(surcIdx + (dx < 0 ? 1 : -1));
+});
+
+// ── StockTrak Carousel ──
+var stIdx   = 0;
+var stTotal = 4;
+var stTrack = document.getElementById('stTrack');
+var stDots  = document.querySelectorAll('#stDots .surc-dot');
+
+function goSt(idx) {
+  stIdx = ((idx % stTotal) + stTotal) % stTotal;
+  stTrack.style.transform = 'translateX(-' + (stIdx * 100) + '%)';
+  stDots.forEach(function(d, i) { d.classList.toggle('active', i === stIdx); });
+}
+
+document.querySelectorAll('#stCarousel .surc-btn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    goSt(stIdx + parseInt(btn.getAttribute('data-dir'), 10));
+  });
+});
+
+stDots.forEach(function(dot) {
+  dot.addEventListener('click', function() {
+    goSt(parseInt(dot.getAttribute('data-idx'), 10));
+  });
+});
+
+var stCarousel = document.getElementById('stCarousel');
+var stTouchX = 0;
+stCarousel.addEventListener('touchstart', function(e) { stTouchX = e.touches[0].clientX; }, {passive:true});
+stCarousel.addEventListener('touchend', function(e) {
+  var dx = e.changedTouches[0].clientX - stTouchX;
+  if (Math.abs(dx) > 40) goSt(stIdx + (dx < 0 ? 1 : -1));
 });
 
 </script>
