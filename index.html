@@ -514,6 +514,18 @@
  .ticker-wrap { display:none; }
  }
  
+ /* ── Language toggle ── */
+ .lang-toggle { display:flex; gap:.3rem; align-items:center; margin-left:1.5rem; }
+ .lang-btn {
+  font-size:.7rem; font-weight:800; letter-spacing:.08em;
+  padding:.28rem .65rem; border-radius:6px;
+  border:1.5px solid var(--ink-faint); cursor:pointer;
+  background:transparent; color:var(--ink-soft); transition:all .2s;
+  font-family:'DM Sans',sans-serif;
+ }
+ .lang-btn.active { background:var(--purple); color:white; border-color:var(--purple); }
+ .lang-btn:hover:not(.active) { border-color:var(--purple); color:var(--purple); }
+
  /* ── Restructured layouts ── */
   .about-intro-grid { max-width: 760px; }
   .skills-full {
@@ -536,12 +548,16 @@
 <nav>
  <div class="logo">Marwa.</div>
  <ul>
- <li><a href="#about">About</a></li>
- <li><a href="#experience">Experience</a></li>
- <li><a href="#projects">Projects</a></li>
- <li><a href="#skills">Skills</a></li>
- <li><a href="#contact">Contact</a></li>
+ <li><a href="#about" data-i18n="nav-about">About</a></li>
+ <li><a href="#experience" data-i18n="nav-exp">Experience</a></li>
+ <li><a href="#projects" data-i18n="nav-proj">Projects</a></li>
+ <li><a href="#skills" data-i18n="nav-skills">Skills</a></li>
+ <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
  </ul>
+ <div class="lang-toggle">
+  <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+ </div>
 </nav>
 
 <!-- TICKER TAPE -->
@@ -596,33 +612,33 @@
 
  <!-- Content -->
  <div class="hero-content">
- <div class="hero-badge"><span class="badge-dot"></span> Finance Intern @ SGLN · Feb 2026</div>
+ <div class="hero-badge" data-i18n="hero-badge"><span class="badge-dot"></span> Finance Intern @ SGLN · Feb 2026</div>
 
  <h1 class="hero-title">
- Hi, I'm<br>
+ <span data-i18n="hero-hi">Hi, I'm</span><br>
  <span class="name">
  Marwa Belhadj
  <svg class="squiggle" viewBox="0 0 400 16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
  <path d="M2,12 C40,2 80,16 120,10 S200,2 240,11 S310,16 360,8 S390,4 398,10" stroke="#AEEA94" stroke-width="4.5" fill="none" stroke-linecap="round"/>
  </svg>
  </span>
- <span class="sub-role">Finance & Analytics</span>
+ <span class="sub-role" data-i18n="hero-role">Finance & Analytics</span>
  </h1>
 
- <p class="hero-desc">
+ <p class="hero-desc" data-i18n="hero-desc">
  BBA student at <mark>Al Akhawayn University</mark>, Morocco — double concentration in <mark>Finance</mark> & <mark>Business Analytics with AI</mark>. Driven by data, strategy, and real-world impact.
  </p>
 
  <div class="hero-ctas">
- <a href="#experience" class="btn btn-primary">My Journey</a>
- <a href="#contact" class="btn btn-outline">Let's Connect</a>
+ <a href="#experience" class="btn btn-primary" data-i18n="hero-btn1">My Journey</a>
+ <a href="#contact" class="btn btn-outline" data-i18n="hero-btn2">Let's Connect</a>
  </div>
 
  <div class="hero-quick">
- <div class="qf"><span class="num">Rabat </span><span class="lbl">Based in</span></div>
- <div class="qf"><span class="num">3</span><span class="lbl">Languages</span></div>
- <div class="qf"><span class="num">AUI '27</span><span class="lbl">Graduating</span></div>
- <div class="qf"><span class="num">2nd</span><span class="lbl">Research Prize</span></div>
+ <div class="qf"><span class="num">Rabat </span><span class="lbl" data-i18n="hero-lbl1">Based in</span></div>
+ <div class="qf"><span class="num">3</span><span class="lbl" data-i18n="hero-lbl2">Languages</span></div>
+ <div class="qf"><span class="num">AUI '27</span><span class="lbl" data-i18n="hero-lbl3">Graduating</span></div>
+ <div class="qf"><span class="num">2nd</span><span class="lbl" data-i18n="hero-lbl4">Research Prize</span></div>
  </div>
  </div>
 
@@ -647,7 +663,7 @@
   </svg>
   <hr class="hsc-divider">
   <div class="hsc-stats">
-   <div class="hsc-stat"><span class="hsc-stat-lbl">GPA</span><span class="hsc-stat-val">3.8</span></div>
+   <div class="hsc-stat"><span class="hsc-stat-lbl">GPA</span><span class="hsc-stat-val">3.98</span></div>
    <div class="hsc-stat"><span class="hsc-stat-lbl">EXP</span><span class="hsc-stat-val">4 roles</span></div>
    <div class="hsc-stat"><span class="hsc-stat-lbl">Awards</span><span class="hsc-stat-val">2 🏅</span></div>
   </div>
@@ -657,21 +673,21 @@
 
 <!-- ABOUT -->
 <section id="about">
- <div class="eyebrow">About Me</div>
- <h2 class="sec-title"><span class="hl">Who I Am</span></h2>
+ <div class="eyebrow" data-i18n="about-eyebrow">About Me</div>
+ <h2 class="sec-title" data-i18n="about-title"><span class="hl">Who I Am</span></h2>
  <div class="about-intro-grid">
 <div class="reveal">
- <p class="pull-quote">
+ <p class="pull-quote" data-i18n="about-quote">
  "Business Administration student with a double specialization in Finance and Business Analytics with AI — rigorous and curious, eager to apply my knowledge in a demanding professional environment and contribute to meaningful, real-world projects."
  </p>
- <p class="about-p">Based in <strong>Rabat, Morocco</strong>, I study at <strong>Al Akhawayn University</strong> in Ifrane — one of Morocco's top universities with an American-style curriculum.</p>
- <p class="about-p">In Fall 2025, I completed an exchange semester at <strong>Rollins College in Florida, USA</strong> — studying International Finance, Supply Chain, and Intercultural Communication.</p>
+ <p class="about-p" data-i18n="about-p1">Based in <strong>Rabat, Morocco</strong>, I study at <strong>Al Akhawayn University</strong> in Ifrane — one of Morocco's top universities with an American-style curriculum.</p>
+ <p class="about-p" data-i18n="about-p2">In Fall 2025, I completed an exchange semester at <strong>Rollins College in Florida, USA</strong> — studying International Finance, Supply Chain, and Intercultural Communication.</p>
 
  <div class="stats-grid">
- <div class="stat-card"><div class="stat-num">3</div><div class="stat-lbl">Languages</div></div>
- <div class="stat-card"><div class="stat-num">90+</div><div class="stat-lbl">Tutoring Sessions</div></div>
- <div class="stat-card"><div class="stat-num" style="font-size:1.4rem">2nd Prize</div><div class="stat-lbl">Research Award</div></div>
- <div class="stat-card"><div class="stat-num">'27</div><div class="stat-lbl">Graduating</div></div>
+ <div class="stat-card"><div class="stat-num">3</div><div class="stat-lbl" data-i18n="about-stat1">Languages</div></div>
+ <div class="stat-card"><div class="stat-num">90+</div><div class="stat-lbl" data-i18n="about-stat2">Tutoring Sessions</div></div>
+ <div class="stat-card"><div class="stat-num" style="font-size:1.4rem">2nd Prize</div><div class="stat-lbl" data-i18n="about-stat3">Research Award</div></div>
+ <div class="stat-card"><div class="stat-num">'27</div><div class="stat-lbl" data-i18n="about-stat4">Graduating</div></div>
  </div>
  </div>
  </div>
@@ -679,12 +695,12 @@
 
 <!-- EXPERIENCE -->
 <section id="experience">
- <div class="eyebrow">Experience & Education</div>
- <h2 class="sec-title">My <span class="hl">Journey</span></h2>
+ <div class="eyebrow" data-i18n="exp-eyebrow">Experience & Education</div>
+ <h2 class="sec-title" data-i18n="exp-title">My <span class="hl">Journey</span></h2>
 
  <div class="exp-grid">
  <div>
- <span class="col-head" style="background:var(--green-t);color:#2a6e1a;border:1.5px solid rgba(174,234,148,.6)">Work Experience</span>
+ <span class="col-head" style="background:var(--green-t);color:#2a6e1a;border:1.5px solid rgba(174,234,148,.6)" data-i18n="exp-col1">Work Experience</span>
  <div class="timeline">
 
  <div class="tl-item">
@@ -750,7 +766,7 @@
  </div>
 
  <div class="reveal" style="transition-delay:.18s">
- <span class="col-head" style="background:var(--violet-t);color:#7a2db8;border:1.5px solid rgba(183,113,229,.3)">Education</span>
+ <span class="col-head" style="background:var(--violet-t);color:#7a2db8;border:1.5px solid rgba(183,113,229,.3)" data-i18n="exp-col2">Education</span>
 
  <div style="margin-top:2rem">
  <div class="edu-card">
@@ -773,8 +789,8 @@
 
 <!-- PROJECTS -->
 <section id="projects">
- <div class="eyebrow">Projects</div>
- <h2 class="sec-title">Work I'm <span class="hl">Proud Of</span></h2>
+ <div class="eyebrow" data-i18n="proj-eyebrow">Projects</div>
+ <h2 class="sec-title" data-i18n="proj-title">Work I'm <span class="hl">Proud Of</span></h2>
 
  <div class="proj-grid">
  <div class="proj-card reveal">
@@ -800,11 +816,11 @@
  <span class="ptag ptag-p">TPB</span>
  <span class="ptag ptag-p">Morocco</span>
  </div>
- <h3>Do Entrepreneurship Influencers Matter? <span style="font-size:.82rem;color:var(--violet);font-weight:600;">🏅 2nd Prize — SURC 2025</span></h3>
- <p>Co-authored study on entrepreneurial intentions among 272 Moroccan university students, applying the Theory of Planned Behavior and Social Learning Theory. Key finding: attitude toward entrepreneurship, subjective norms, and inspiring role models are the strongest predictors of intent — while social media influencers show limited direct impact. Analyzed via PLS-SEM using SmartPLS.</p>
+ <h3 data-i18n="proj1-h3">Do Entrepreneurship Influencers Matter? <span style="font-size:.82rem;color:var(--violet);font-weight:600;">🏅 2nd Prize — SURC 2025</span></h3>
+ <p data-i18n="proj1-p">Co-authored study on entrepreneurial intentions among 272 Moroccan university students, applying the Theory of Planned Behavior and Social Learning Theory. Key finding: attitude toward entrepreneurship, subjective norms, and inspiring role models are the strongest predictors of intent — while social media influencers show limited direct impact. Analyzed via PLS-SEM using SmartPLS.</p>
  <a href="entrepreneurship_research.pdf" download class="btn btn-outline" style="font-size:.8rem;padding:.45rem 1.1rem;margin-top:1rem;display:inline-flex;align-items:center;gap:.4rem;">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-  Download Paper
+  <span data-i18n="proj1-btn">Download Paper</span>
  </a>
  </div>
  </div>
@@ -820,11 +836,11 @@
  <span class="ptag ptag-g">ETFs</span>
  <span class="ptag ptag-g">🥇 Ranked 1st</span>
  </div>
- <h3>International Finance — Portfolio Competition</h3>
- <p>Class-wide trading competition in International Finance. Managed a multi-asset portfolio of international equities and ETFs on StockTrak, applying real-world investment strategies — and ranked <strong style="color:var(--purple)">1st among all classmates</strong>.</p>
+ <h3 data-i18n="proj2-h3">International Finance — Portfolio Competition</h3>
+ <p data-i18n="proj2-p">Class-wide trading competition in International Finance. Managed a multi-asset portfolio of international equities and ETFs on StockTrak, applying real-world investment strategies — and ranked <strong style="color:var(--purple)">1st among all classmates</strong>.</p>
  <a href="stocktrak_portfolio.xlsx" download class="btn btn-outline" style="font-size:.8rem;padding:.45rem 1.1rem;margin-top:1rem;display:inline-flex;align-items:center;gap:.4rem;">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-  Download Portfolio Summary
+  <span data-i18n="proj2-btn">Download Portfolio Summary</span>
  </a>
  </div>
  </div>
@@ -837,8 +853,8 @@
  <span class="ptag ptag-v">Forecasting</span>
  <span class="ptag ptag-v">Coursera</span>
  </div>
- <h3>Tesla Stock Price Prediction</h3>
- <p>Built a time-series forecasting model using Facebook Prophet to predict Tesla's stock price. Completed as part of a Coursera certification in applied financial analytics.</p>
+ <h3 data-i18n="proj3-h3">Tesla Stock Price Prediction</h3>
+ <p data-i18n="proj3-p">Built a time-series forecasting model using Facebook Prophet to predict Tesla's stock price. Completed as part of a Coursera certification in applied financial analytics.</p>
  </div>
  </div>
  </div>
@@ -846,12 +862,12 @@
 
 <!-- SKILLS -->
 <section id="skills" style="background:var(--paper2);">
- <div class="eyebrow">Skills & Expertise</div>
- <h2 class="sec-title">What I <span class="hl">Bring</span></h2>
+ <div class="eyebrow" data-i18n="skills-eyebrow">Skills & Expertise</div>
+ <h2 class="sec-title" data-i18n="skills-title">What I <span class="hl">Bring</span></h2>
  <div class="skills-full">
 
   <div class="reveal">
-   <h4>Technical Skills</h4>
+   <h4 data-i18n="skills-h4-tech">Technical Skills</h4>
    <div class="tags">
     <span class="tag tag-p">Microsoft Excel</span>
     <span class="tag tag-p">PowerPoint</span>
@@ -863,7 +879,7 @@
     <span class="tag tag-v">Data Analysis</span>
    </div>
 
-   <h4 style="margin-top:1.5rem">Domain Skills</h4>
+   <h4 style="margin-top:1.5rem" data-i18n="skills-h4-domain">Domain Skills</h4>
    <div class="tags">
     <span class="tag tag-p">Financial Analysis</span>
     <span class="tag tag-p">Budget Tracking</span>
@@ -872,7 +888,7 @@
     <span class="tag tag-v">Hypothesis Testing</span>
    </div>
 
-   <h4 style="margin-top:1.5rem">Languages</h4>
+   <h4 style="margin-top:1.5rem" data-i18n="skills-h4-lang">Languages</h4>
    <div class="tags">
     <span class="tag tag-c">Arabic</span>
     <span class="tag tag-c">French</span>
@@ -881,8 +897,8 @@
   </div>
 
   <div class="reveal" style="transition-delay:.15s">
-   <div class="award-box">2nd Prize — Summer Undergraduate Research Competition (SURC)</div>
-   <h4 style="margin-top:1.8rem">Certifications</h4>
+   <div class="award-box" data-i18n="skills-award">2nd Prize — Summer Undergraduate Research Competition (SURC)</div>
+   <h4 style="margin-top:1.8rem" data-i18n="skills-h4-cert">Certifications</h4>
    <div class="cert-list">
     <div class="cert-item">Tesla Stock Price Prediction — Facebook Prophet (Coursera)</div>
     <div class="cert-item">Simple Linear Regression for Beginners (Coursera)</div>
@@ -895,27 +911,27 @@
 <!-- CONTACT -->
 <section id="contact">
  <div class="contact-inner">
- <div class="eyebrow" style="justify-content:center">Get in Touch</div>
- <h2 class="big-title reveal">Let's <span>Connect</span><br>& Collaborate</h2>
- <p class="contact-sub reveal">Whether it's a summer internship, a research collaboration, or just a friendly hello — I'd love to hear from you!</p>
+ <div class="eyebrow" style="justify-content:center" data-i18n="contact-eyebrow">Get in Touch</div>
+ <h2 class="big-title reveal" data-i18n="contact-title">Let's <span>Connect</span><br>& Collaborate</h2>
+ <p class="contact-sub reveal" data-i18n="contact-sub">Whether it's a summer internship, a research collaboration, or just a friendly hello — I'd love to hear from you!</p>
 
  <div class="contact-chips reveal">
  <a href="mailto:mar.belhadj@aui.ma" class="chip">mar.belhadj@aui.ma</a>
  <a href="tel:+212628368324" class="chip">+212 628 368 324</a>
- <div class="chip">Rabat, Morocco</div>
+ <div class="chip" data-i18n="contact-loc">Rabat, Morocco</div>
  </div>
 
  <div class="social-row reveal">
  <a href="https://www.linkedin.com/in/marwa-belhadj-52b9942a6/" target="_blank" class="soc soc-p">LinkedIn</a>
- <a href="CV_Marwa_Belhadj.pdf" download="CV_Marwa_Belhadj.pdf" class="soc soc-g">Download CV</a>
+ <a href="CV_Marwa_Belhadj.pdf" download="CV_Marwa_Belhadj.pdf" class="soc soc-g" data-i18n="contact-cv">Download CV</a>
  </div>
  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
- <p>Crafted with by <span>Marwa Belhadj</span></p>
- <p>BBA · Finance & Business Analytics · <span>Al Akhawayn University '27</span></p>
+ <p data-i18n="footer-1">Crafted with ♥ by <span>Marwa Belhadj</span></p>
+ <p data-i18n="footer-2">BBA · Finance & Business Analytics · <span>Al Akhawayn University '27</span></p>
 </footer>
 
 
@@ -996,6 +1012,139 @@ if (hscPrice) {
     hscPrice.textContent = (base + jitter).toFixed(2);
   }, 2800);
 }
+
+// ── i18n ──
+var i18n = {
+  en: {
+    'nav-about':     'About',
+    'nav-exp':       'Experience',
+    'nav-proj':      'Projects',
+    'nav-skills':    'Skills',
+    'nav-contact':   'Contact',
+    'hero-badge':    '<span class="badge-dot"></span> Finance Intern @ SGLN · Feb 2026',
+    'hero-hi':       'Hi, I\'m',
+    'hero-role':     'Finance & Analytics',
+    'hero-desc':     'BBA student at <mark>Al Akhawayn University</mark>, Morocco — double concentration in <mark>Finance</mark> & <mark>Business Analytics with AI</mark>. Driven by data, strategy, and real-world impact.',
+    'hero-btn1':     'My Journey',
+    'hero-btn2':     'Let\'s Connect',
+    'hero-lbl1':     'Based in',
+    'hero-lbl2':     'Languages',
+    'hero-lbl3':     'Graduating',
+    'hero-lbl4':     'Research Prize',
+    'about-eyebrow': 'About Me',
+    'about-title':   '<span class="hl">Who I Am</span>',
+    'about-quote':   '"Business Administration student with a double specialization in Finance and Business Analytics with AI — rigorous and curious, eager to apply my knowledge in a demanding professional environment and contribute to meaningful, real-world projects."',
+    'about-p1':      'Based in <strong>Rabat, Morocco</strong>, I study at <strong>Al Akhawayn University</strong> in Ifrane — one of Morocco\'s top universities with an American-style curriculum.',
+    'about-p2':      'In Fall 2025, I completed an exchange semester at <strong>Rollins College in Florida, USA</strong> — studying International Finance, Supply Chain, and Intercultural Communication.',
+    'about-stat1':   'Languages',
+    'about-stat2':   'Tutoring Sessions',
+    'about-stat3':   'Research Award',
+    'about-stat4':   'Graduating',
+    'exp-eyebrow':   'Experience & Education',
+    'exp-title':     'My <span class="hl">Journey</span>',
+    'exp-col1':      'Work Experience',
+    'exp-col2':      'Education',
+    'proj-eyebrow':  'Projects',
+    'proj-title':    'Work I\'m <span class="hl">Proud Of</span>',
+    'proj1-h3':      'Do Entrepreneurship Influencers Matter? <span style="font-size:.82rem;color:var(--violet);font-weight:600;">🏅 2nd Prize — SURC 2025</span>',
+    'proj1-p':       'Co-authored study on entrepreneurial intentions among 272 Moroccan university students, applying the Theory of Planned Behavior and Social Learning Theory. Key finding: attitude toward entrepreneurship, subjective norms, and inspiring role models are the strongest predictors of intent — while social media influencers show limited direct impact. Analyzed via PLS-SEM using SmartPLS.',
+    'proj1-btn':     'Download Paper',
+    'proj2-h3':      'International Finance — Portfolio Competition',
+    'proj2-p':       'Class-wide trading competition in International Finance. Managed a multi-asset portfolio of international equities and ETFs on StockTrak, applying real-world investment strategies — and ranked <strong style="color:var(--purple)">1st among all classmates</strong>.',
+    'proj2-btn':     'Download Portfolio Summary',
+    'proj3-h3':      'Tesla Stock Price Prediction',
+    'proj3-p':       'Built a time-series forecasting model using Facebook Prophet to predict Tesla\'s stock price. Completed as part of a Coursera certification in applied financial analytics.',
+    'skills-eyebrow':   'Skills & Expertise',
+    'skills-title':     'What I <span class="hl">Bring</span>',
+    'skills-h4-tech':   'Technical Skills',
+    'skills-h4-domain': 'Domain Skills',
+    'skills-h4-lang':   'Languages',
+    'skills-award':     '2nd Prize — Summer Undergraduate Research Competition (SURC)',
+    'skills-h4-cert':   'Certifications',
+    'contact-eyebrow':  'Get in Touch',
+    'contact-title':    'Let\'s <span>Connect</span><br>& Collaborate',
+    'contact-sub':      'Whether it\'s a summer internship, a research collaboration, or just a friendly hello — I\'d love to hear from you!',
+    'contact-loc':      'Rabat, Morocco',
+    'contact-cv':       'Download CV',
+    'footer-1':         'Crafted with ♥ by <span>Marwa Belhadj</span>',
+    'footer-2':         'BBA · Finance & Business Analytics · <span>Al Akhawayn University \'27</span>'
+  },
+  fr: {
+    'nav-about':     'À propos',
+    'nav-exp':       'Expérience',
+    'nav-proj':      'Projets',
+    'nav-skills':    'Compétences',
+    'nav-contact':   'Contact',
+    'hero-badge':    '<span class="badge-dot"></span> Stagiaire Finance @ SGLN · Fév 2026',
+    'hero-hi':       'Bonjour, je suis',
+    'hero-role':     'Finance & Analytique',
+    'hero-desc':     'Étudiante en BBA à <mark>Al Akhawayn University</mark>, Maroc — double spécialisation en <mark>Finance</mark> & <mark>Business Analytics avec IA</mark>. Passionnée par la data, la stratégie et l\'impact concret.',
+    'hero-btn1':     'Mon Parcours',
+    'hero-btn2':     'Me Contacter',
+    'hero-lbl1':     'Basée à',
+    'hero-lbl2':     'Langues',
+    'hero-lbl3':     'Diplomation',
+    'hero-lbl4':     'Prix Recherche',
+    'about-eyebrow': 'À propos',
+    'about-title':   '<span class="hl">Qui je suis</span>',
+    'about-quote':   '"Étudiante en Administration des affaires, double spécialisation en Finance et en Business Analytics avec IA — rigoureuse et curieuse, je cherche à mettre en pratique mes connaissances dans un environnement professionnel exigeant et à contribuer à des projets concrets et porteurs de sens."',
+    'about-p1':      'Basée à <strong>Rabat, Maroc</strong>, j\'étudie à <strong>Al Akhawayn University</strong> à Ifrane — l\'une des meilleures universités du Maroc, avec un cursus de style américain.',
+    'about-p2':      'À l\'automne 2025, j\'ai effectué un semestre d\'échange à <strong>Rollins College, Floride, États-Unis</strong> — en Finance Internationale, Supply Chain et Communication Interculturelle.',
+    'about-stat1':   'Langues',
+    'about-stat2':   'Séances de tutorat',
+    'about-stat3':   'Prix de recherche',
+    'about-stat4':   'Diplomation',
+    'exp-eyebrow':   'Expérience & Formation',
+    'exp-title':     'Mon <span class="hl">Parcours</span>',
+    'exp-col1':      'Expérience professionnelle',
+    'exp-col2':      'Formation',
+    'proj-eyebrow':  'Projets',
+    'proj-title':    'Travaux dont je suis <span class="hl">Fière</span>',
+    'proj1-h3':      'Les influenceurs entrepreneuriaux ont-ils un impact ? <span style="font-size:.82rem;color:var(--violet);font-weight:600;">🏅 2ème Prix — SURC 2025</span>',
+    'proj1-p':       'Étude co-réalisée sur les intentions entrepreneuriales de 272 étudiants marocains, en appliquant la Théorie du Comportement Planifié et la Théorie de l\'Apprentissage Social. Résultat clé : l\'attitude envers l\'entrepreneuriat, les normes subjectives et les modèles inspirants sont les meilleurs prédicteurs d\'intention — alors que les influenceurs des réseaux sociaux ont un impact direct limité. Analysé via PLS-SEM avec SmartPLS.',
+    'proj1-btn':     'Télécharger l\'article',
+    'proj2-h3':      'Finance Internationale — Concours de portefeuille',
+    'proj2-p':       'Compétition boursière à l\'échelle de la classe en Finance Internationale. Gestion d\'un portefeuille multi-actifs composé d\'actions internationales et d\'ETFs sur StockTrak — classée <strong style="color:var(--purple)">1ère parmi tous les camarades</strong>.',
+    'proj2-btn':     'Télécharger le résumé',
+    'proj3-h3':      'Prédiction du cours de l\'action Tesla',
+    'proj3-p':       'Modèle de prévision de séries temporelles développé avec Facebook Prophet pour prédire le cours de l\'action Tesla. Réalisé dans le cadre d\'une certification Coursera en analyse financière appliquée.',
+    'skills-eyebrow':   'Compétences & Expertises',
+    'skills-title':     'Ce que j\'<span class="hl">Apporte</span>',
+    'skills-h4-tech':   'Compétences techniques',
+    'skills-h4-domain': 'Compétences domaine',
+    'skills-h4-lang':   'Langues',
+    'skills-award':     '2ème Prix — Compétition de recherche estivale (SURC)',
+    'skills-h4-cert':   'Certifications',
+    'contact-eyebrow':  'Me contacter',
+    'contact-title':    'Entrons en <span>Connect</span><br>& Collaborons',
+    'contact-sub':      'Que ce soit pour un stage d\'été, une collaboration en recherche, ou simplement pour dire bonjour — je serais ravie d\'échanger avec vous !',
+    'contact-loc':      'Rabat, Maroc',
+    'contact-cv':       'Télécharger mon CV',
+    'footer-1':         'Créé avec ♥ par <span>Marwa Belhadj</span>',
+    'footer-2':         'BBA · Finance & Analytique · <span>Al Akhawayn University \'27</span>'
+  }
+};
+
+function setLang(lang) {
+  if (!i18n[lang]) return;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (i18n[lang][key] !== undefined) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  document.documentElement.lang = lang;
+  localStorage.setItem('portfolio-lang', lang);
+}
+
+// Restore saved language on load
+(function() {
+  var saved = localStorage.getItem('portfolio-lang');
+  if (saved && i18n[saved]) setLang(saved);
+})();
 
 </script>
 </body>
