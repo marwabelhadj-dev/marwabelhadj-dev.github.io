@@ -421,7 +421,8 @@
   background: var(--ink); overflow:hidden; height:38px;
   display:flex; align-items:stretch;
   border-bottom:1px solid rgba(174,234,148,.15);
-  position:relative; z-index:499;
+  position:sticky; top:62px; margin-top:62px;
+  z-index:499;
  }
  .ticker-label {
   background:var(--purple); color:#fff;
@@ -510,6 +511,7 @@
  .about-grid,.exp-grid { grid-template-columns:1fr; gap:2.5rem; }
  footer { flex-direction:column; text-align:center; }
  .hero-stock-card { display:none; }
+ .ticker-wrap { display:none; }
  }
  
  /* ── Restructured layouts ── */
