@@ -421,8 +421,8 @@
   background: var(--ink); overflow:hidden; height:38px;
   display:flex; align-items:stretch;
   border-bottom:1px solid rgba(174,234,148,.15);
-  position:sticky; top:62px; margin-top:62px;
-  z-index:499;
+  margin-top:62px;
+  z-index:1;
  }
  .ticker-label {
   background:var(--purple); color:#fff;
@@ -537,6 +537,47 @@
   @media(max-width:900px) {
     .skills-full { grid-template-columns: 1fr; gap: 1.5rem; }
   }
+
+/* ── HOBBIES ── */
+#hobbies { background: linear-gradient(160deg, var(--cream-t) 0%, rgba(183,113,229,.06) 100%); }
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.hobby-card {
+  background: white;
+  border: 1.5px solid var(--ink-faint);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all .35s;
+  box-shadow: 0 4px 20px rgba(70,53,177,.06);
+}
+.hobby-card:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(70,53,177,.13); border-color: var(--violet); }
+.hobby-img-slot {
+  height: 220px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  font-size: 5rem;
+}
+.hobby-img-slot .placeholder-label {
+  position: absolute; bottom: .7rem; right: .9rem;
+  font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  background: rgba(255,255,255,.85); color: var(--ink-soft);
+  padding: .2rem .6rem; border-radius: 20px;
+}
+.hc1 { background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); }
+.hc2 { background: linear-gradient(135deg, var(--cream) 0%, rgba(255,251,202,.5) 100%); }
+.hc3 { background: linear-gradient(135deg, var(--green-t) 0%, rgba(174,234,148,.25) 100%); }
+.hobby-body { padding: 1.4rem 1.5rem 1.6rem; }
+.hobby-body h3 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:1.1rem; color:var(--ink); margin-bottom:.4rem; }
+.hobby-body p { font-size:.88rem; line-height:1.7; color:var(--ink-soft); }
+.hobby-tag {
+  display: inline-block; font-size:.7rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase;
+  padding:.18rem .6rem; border-radius:6px; margin-bottom:.65rem;
+}
+@media(max-width:900px) { .hobbies-grid { grid-template-columns: 1fr; } }
 
 </style>
 </head>
@@ -902,6 +943,55 @@
    <div class="cert-list">
     <div class="cert-item">Tesla Stock Price Prediction — Facebook Prophet (Coursera)</div>
     <div class="cert-item">Simple Linear Regression for Beginners (Coursera)</div>
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies">
+ <div class="eyebrow">Beyond the Spreadsheets</div>
+ <h2 class="sec-title">A Little Bit <span class="hl">About Me</span></h2>
+
+ <div class="hobbies-grid">
+
+  <!-- MUSIC / VIOLIN -->
+  <div class="hobby-card reveal">
+   <div class="hobby-img-slot hc1">
+    🎻
+    <span class="placeholder-label">📷 Photos coming soon</span>
+   </div>
+   <div class="hobby-body">
+    <span class="hobby-tag" style="background:var(--violet-t);color:#7a2db8;">Music</span>
+    <h3>Violin & Music</h3>
+    <p>Details and photos coming soon — stay tuned!</p>
+   </div>
+  </div>
+
+  <!-- THEATER -->
+  <div class="hobby-card reveal" style="transition-delay:.1s">
+   <div class="hobby-img-slot hc2">
+    🎭
+    <span class="placeholder-label">📷 Photos coming soon</span>
+   </div>
+   <div class="hobby-body">
+    <span class="hobby-tag" style="background:var(--cream-t);color:#7a6b00;">Theater</span>
+    <h3>Theater & Performance</h3>
+    <p>Details and photos coming soon — stay tuned!</p>
+   </div>
+  </div>
+
+  <!-- VISUAL ARTS -->
+  <div class="hobby-card reveal" style="transition-delay:.2s">
+   <div class="hobby-img-slot hc3">
+    🎨
+    <span class="placeholder-label">📷 Photos coming soon</span>
+   </div>
+   <div class="hobby-body">
+    <span class="hobby-tag" style="background:var(--green-t);color:#2a6e1a;">Visual Arts</span>
+    <h3>Drawing & Painting</h3>
+    <p>Details and photos coming soon — stay tuned!</p>
    </div>
   </div>
 
