@@ -1,0 +1,203 @@
+/* ── Tabs ─────────────────────────────────────────── */
+.tab-btn {
+  color: #9ca3af;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn.active {
+  color: #059669;
+  border-bottom-color: #059669;
+}
+.tab-btn:hover:not(.active) {
+  color: #374151;
+}
+
+/* ── Activity cards ───────────────────────────────── */
+.activity-card {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  background: white;
+}
+.activity-card:hover {
+  border-color: #059669;
+  background: #f0fdf4;
+}
+.activity-card.selected {
+  border-color: #059669;
+  background: #ecfdf5;
+  box-shadow: 0 0 0 3px #a7f3d0;
+}
+
+/* ── Restaurant cards ─────────────────────────────── */
+.restaurant-card {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  background: white;
+}
+.restaurant-card:hover {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+.restaurant-card.selected {
+  border-color: #f59e0b;
+  background: #fef3c7;
+  box-shadow: 0 0 0 3px #fde68a;
+}
+
+/* ── Type filter pills ────────────────────────────── */
+.type-pill {
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border: 1.5px solid #d1d5db;
+  background: white;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.type-pill.active {
+  background: #059669;
+  border-color: #059669;
+  color: white;
+}
+.type-pill:hover:not(.active) {
+  border-color: #059669;
+  color: #059669;
+  background: #f0fdf4;
+}
+
+/* ── Transport cards ──────────────────────────────── */
+.transport-card {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.875rem;
+  padding: 0.875rem 1rem;
+  background: white;
+  transition: border-color 0.15s;
+}
+.transport-card:hover {
+  border-color: #d1d5db;
+}
+.transport-card.unavailable {
+  opacity: 0.45;
+}
+
+/* ── Quiz options ─────────────────────────────────── */
+.quiz-option {
+  border: 2px solid #e5e7eb;
+  border-radius: 0.875rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+  width: 100%;
+  background: white;
+  font-size: 0.875rem;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.quiz-option:hover {
+  border-color: #059669;
+  background: #f0fdf4;
+  color: #065f46;
+}
+.quiz-option.selected {
+  border-color: #059669;
+  background: #ecfdf5;
+  color: #065f46;
+  font-weight: 600;
+}
+.quiz-option:disabled {
+  cursor: default;
+}
+
+/* ── Loader spinner ───────────────────────────────── */
+.loader {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #059669;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Modal slide-up animation ─────────────────────── */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slide-up 0.25s ease-out;
+}
+
+/* ── Toast slide-in ───────────────────────────────── */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+#toast:not(.hidden) {
+  animation: toast-in 0.2s ease-out;
+}
+
+/* ── Leaflet popup ────────────────────────────────── */
+.leaflet-popup-content-wrapper {
+  border-radius: 1rem !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+.leaflet-popup-content {
+  margin: 0 !important;
+  font-family: system-ui, sans-serif;
+}
+.leaflet-popup-tip-container {
+  margin-top: -1px;
+}
+
+/* ── Map marker bounce on select ─────────────────── */
+.marker-bounce {
+  animation: bounce 0.4s ease;
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  40%      { transform: translateY(-8px); }
+  70%      { transform: translateY(-4px); }
+}
+
+/* ── Scrollbar styling ────────────────────────────── */
+.overflow-y-auto::-webkit-scrollbar { width: 4px; }
+.overflow-y-auto::-webkit-scrollbar-track { background: transparent; }
+.overflow-y-auto::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 2px; }
+.overflow-y-auto::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* ── Range input ──────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #e5e7eb;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #059669;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
