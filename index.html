@@ -1050,7 +1050,7 @@
 
  <div class="social-row reveal">
  <a href="https://www.linkedin.com/in/marwa-belhadj-52b9942a6/" target="_blank" class="soc soc-p">LinkedIn</a>
- <a href="CV_Marwa_Belhadj_EN.pdf" download="CV_Marwa_Belhadj_EN.pdf" id="cv-download-btn" class="soc soc-g" data-i18n="contact-cv">Download CV</a>
+ <a href="CV_Marwa_Belhadj_EN.pdf" download="CV_Marwa_Belhadj_EN.pdf" id="cv-download-btn" class="soc soc-g" data-i18n="contact-cv">Télécharger CV</a>
  </div>
  </div>
 </section>
@@ -1267,13 +1267,6 @@ function setLang(lang) {
   });
   document.documentElement.lang = lang;
   localStorage.setItem('portfolio-lang', lang);
-  // Swap CV download file based on language
-  var cvBtn = document.getElementById('cv-download-btn');
-  if (cvBtn) {
-    var cvFile = lang === 'fr' ? 'CV_Marwa_Belhadj_FR.pdf' : 'CV_Marwa_Belhadj_EN.pdf';
-    cvBtn.href = cvFile;
-    cvBtn.download = cvFile;
-  }
 }
 
 // Restore saved language on load
@@ -1286,18 +1279,36 @@ function setLang(lang) {
 (function() {
   var toastTimer;
 
+  var toastCopy = {
+    en: {
+      label: 'Analyst Note',
+      msg: 'You don\'t need my CV if you\'ve visited my website.<br><strong>Strong Hire</strong> — no paperwork required ✦',
+      ok: 'Got it 😄',
+      dl: 'Fine, take it 😏'
+    },
+    fr: {
+      label: 'Note d\'Analyste',
+      msg: 'Pas besoin de mon CV si vous avez visité mon site.<br><strong>Recrutement confirmé</strong> — aucun document requis ✦',
+      ok: 'Bien reçu 😄',
+      dl: 'D\'accord, prenez-le 😏'
+    }
+  };
+
   function createToast() {
-    if (document.getElementById('cv-toast')) return;
-    var today = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    var lang = localStorage.getItem('portfolio-lang') === 'fr' ? 'fr' : 'en';
+    var c = toastCopy[lang];
+    var today = new Date().toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {month:'short',day:'numeric',year:'numeric'});
+    var existing = document.getElementById('cv-toast');
+    if (existing) existing.remove();
     var t = document.createElement('div');
     t.id = 'cv-toast';
     t.innerHTML =
       '<div class="cv-t-icon">📊</div>' +
-      '<div class="cv-t-label">Analyst Note &middot; ' + today + '</div>' +
-      '<div class="cv-t-msg">You don\'t need my CV if you\'ve visited my website.<br><strong>Strong Hire</strong> — no paperwork required ✦</div>' +
+      '<div class="cv-t-label">' + c.label + ' &middot; ' + today + '</div>' +
+      '<div class="cv-t-msg">' + c.msg + '</div>' +
       '<div class="cv-t-actions">' +
-        '<button class="cv-t-ok" id="cv-t-ok">Got it 😄</button>' +
-        '<button class="cv-t-dl" id="cv-t-dl">Fine, take it 😏</button>' +
+        '<button class="cv-t-ok" id="cv-t-ok">' + c.ok + '</button>' +
+        '<button class="cv-t-dl" id="cv-t-dl">' + c.dl + '</button>' +
       '</div>' +
       '<div class="cv-t-bar"><div class="cv-t-bar-fill" id="cv-t-fill"></div></div>';
     document.body.appendChild(t);
@@ -1327,10 +1338,9 @@ function setLang(lang) {
     var t = document.getElementById('cv-toast');
     if (t) t.classList.remove('show');
     if (doDownload) {
-      var cvBtn = document.getElementById('cv-download-btn');
       var a = document.createElement('a');
-      a.href = cvBtn ? cvBtn.href : 'CV_Marwa_Belhadj_EN.pdf';
-      a.download = cvBtn ? cvBtn.download : 'CV_Marwa_Belhadj_EN.pdf';
+      a.href = 'CV_Marwa_Belhadj_EN.pdf';
+      a.download = 'CV_Marwa_Belhadj_EN.pdf';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
