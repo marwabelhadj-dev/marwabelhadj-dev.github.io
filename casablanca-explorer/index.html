@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casablanca Explorer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-gray-50 h-screen overflow-hidden flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between z-20 flex-shrink-0 shadow-sm">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 bg-emerald-600 rounded-xl flex items-center justify-center shadow-sm">
+        <span class="text-white text-base font-bold">🏙️</span>
+      </div>
+      <div>
+        <h1 class="font-bold text-gray-900 text-lg leading-none">Casablanca Explorer</h1>
+        <p class="text-xs text-gray-400 mt-0.5">Discover your city</p>
+      </div>
+    </div>
+    <button id="quiz-btn" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-sm hover:shadow-md">
+      <span>✨</span>
+      Mood Quiz
+    </button>
+  </header>
+
+  <!-- Main layout -->
+  <div class="flex flex-1 overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-80 bg-white border-r border-gray-100 flex flex-col overflow-hidden z-10 shadow-sm">
+
+      <!-- Filters -->
+      <div class="p-4 border-b border-gray-100 bg-gray-50">
+        <!-- Radius -->
+        <div class="mb-3">
+          <div class="flex justify-between items-center mb-1.5">
+            <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Search Radius</label>
+            <span id="radius-label" class="text-sm font-bold text-emerald-600">3 km</span>
+          </div>
+          <input type="range" id="radius-slider" min="500" max="10000" step="500" value="3000"
+            class="w-full h-1.5 rounded-full appearance-none cursor-pointer accent-emerald-600 bg-gray-200" />
+        </div>
+        <!-- Type pills -->
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Activity Type</label>
+          <div id="type-filters" class="flex flex-wrap gap-1.5 mt-2"></div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex border-b border-gray-100 bg-white">
+        <button class="tab-btn active flex-1 py-2.5 text-xs font-semibold text-center" data-tab="activities">🎭 Activities</button>
+        <button class="tab-btn flex-1 py-2.5 text-xs font-semibold text-center" data-tab="restaurants">🍽️ Restaurants</button>
+        <button class="tab-btn flex-1 py-2.5 text-xs font-semibold text-center" data-tab="transport">🚊 Transport</button>
+      </div>
+
+      <!-- Tab panels -->
+      <div class="flex-1 overflow-y-auto">
+        <div id="panel-activities" class="tab-panel p-3 space-y-2">
+          <div class="text-center py-10 text-gray-400">
+            <div class="text-3xl mb-2">🗺️</div>
+            <p class="text-sm">Loading activities…</p>
+          </div>
+        </div>
+
+        <div id="panel-restaurants" class="tab-panel hidden p-3 space-y-2">
+          <div class="text-center py-10 text-gray-400">
+            <div class="loader mx-auto mb-3"></div>
+            <p class="text-sm">Loading restaurants…</p>
+          </div>
+        </div>
+
+        <div id="panel-transport" class="tab-panel hidden">
+          <div id="transport-placeholder" class="text-center py-10 text-gray-400 px-4">
+            <div class="text-3xl mb-2">🗺️</div>
+            <p class="text-sm font-medium text-gray-500 mb-1">Select a destination</p>
+            <p class="text-xs text-gray-400">Click an activity or restaurant to compare transport options</p>
+          </div>
+          <div id="transport-content" class="hidden"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Map -->
+    <div id="map" class="flex-1 relative z-0"></div>
+  </div>
+
+  <!-- Quiz Modal -->
+  <div id="quiz-modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-slide-up">
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 class="text-xl font-bold text-gray-900">Find Your Perfect Activity</h2>
+            <p class="text-xs text-gray-400 mt-0.5">Answer 4 quick questions</p>
+          </div>
+          <button id="quiz-close" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 transition-colors">✕</button>
+        </div>
+        <div id="quiz-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="hidden fixed bottom-5 right-5 bg-gray-900 text-white px-4 py-3 rounded-xl shadow-xl z-50 max-w-xs flex items-center gap-2">
+    <span id="toast-icon">📍</span>
+    <p id="toast-message" class="text-sm font-medium"></p>
+  </div>
+
+  <!-- Scripts (order matters – global scope) -->
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/transport.js"></script>
+  <script src="js/restaurants.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
