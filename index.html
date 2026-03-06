@@ -1050,7 +1050,7 @@
 
  <div class="social-row reveal">
  <a href="https://www.linkedin.com/in/marwa-belhadj-52b9942a6/" target="_blank" class="soc soc-p">LinkedIn</a>
- <a href="CV_Marwa_Belhadj.pdf" download="CV_Marwa_Belhadj.pdf" class="soc soc-g" data-i18n="contact-cv">Download CV</a>
+ <a href="CV_Marwa_Belhadj_EN.pdf" download="CV_Marwa_Belhadj_EN.pdf" id="cv-download-btn" class="soc soc-g" data-i18n="contact-cv">Download CV</a>
  </div>
  </div>
 </section>
@@ -1267,6 +1267,13 @@ function setLang(lang) {
   });
   document.documentElement.lang = lang;
   localStorage.setItem('portfolio-lang', lang);
+  // Swap CV download file based on language
+  var cvBtn = document.getElementById('cv-download-btn');
+  if (cvBtn) {
+    var cvFile = lang === 'fr' ? 'CV_Marwa_Belhadj_FR.pdf' : 'CV_Marwa_Belhadj_EN.pdf';
+    cvBtn.href = cvFile;
+    cvBtn.download = cvFile;
+  }
 }
 
 // Restore saved language on load
@@ -1320,9 +1327,10 @@ function setLang(lang) {
     var t = document.getElementById('cv-toast');
     if (t) t.classList.remove('show');
     if (doDownload) {
+      var cvBtn = document.getElementById('cv-download-btn');
       var a = document.createElement('a');
-      a.href = 'CV_Marwa_Belhadj.pdf';
-      a.download = 'CV_Marwa_Belhadj.pdf';
+      a.href = cvBtn ? cvBtn.href : 'CV_Marwa_Belhadj_EN.pdf';
+      a.download = cvBtn ? cvBtn.download : 'CV_Marwa_Belhadj_EN.pdf';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -1330,7 +1338,7 @@ function setLang(lang) {
   }
 
   document.addEventListener('click', function(e) {
-    var btn = e.target.closest('[download="CV_Marwa_Belhadj.pdf"]');
+    var btn = e.target.closest('#cv-download-btn');
     if (btn) {
       e.preventDefault();
       showToast();
